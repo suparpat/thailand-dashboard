@@ -1,0 +1,18 @@
+{
+	"google": {
+		"youtube_data": "***"
+	},
+	"instagram": {
+		"client_id": "***",
+		"client_secret": "***",
+		"access_token": "***"
+	},
+	"tmd_api": {
+		"uid": "***",
+		"ukey": "***"
+	},
+	"twitter": {
+		"real_access_token": "***",
+		"th_woeid": "23424960"
+	}
+}

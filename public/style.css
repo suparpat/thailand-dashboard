@@ -1,0 +1,47 @@
+#title-left {
+	float:left;
+	width:80%;
+}
+
+#menu {
+	float:right;
+	text-align: right;
+	width:20%;
+}
+
+#main {
+	overflow: hidden;
+}
+
+#content {
+	float: left;
+	width: 70%;
+}
+
+#rightsidebar {
+	float: right;
+	width: 30%;
+	text-align: right;
+}
+
+#rightsidebar *{
+	text-align: right;
+}
+
+#content-left {
+	float: left;
+	width: 50%;
+}
+
+#content-right {
+	float: right;
+	width: 50%;
+}
+
+@media screen and (max-width: 692px)   {
+    #content, #rightsidebar, #rightsidebar *, #content-left, #content-right{
+        width:100%;   
+        float:none;
+    }
+    
+}
