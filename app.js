@@ -49,13 +49,11 @@ app.get('/api/youtubetrending', function(req, res){
 				"&maxResults=25" + 
 				"&key=" + config['google']['youtube_data']
 
-	console.log(url)
 	request(url, function(error, response, body){
 		if(error){
 			console.log(error)
 			res.end('Error occurred getting youtube information')
 		}else{
-			console.log('responding')
 			res.header('Content-Type', 'application/json; charset=UTF-8')
 			res.end(body)
 		}
@@ -99,7 +97,6 @@ app.get('/api/pantiptrending', function(req, res){
 })
 
 app.get('/api/averageincome', function(req, res){
-			console.log(avgIncome)
 	csv.parse(avgIncome, function(err, data){
 		res.json(data)
 	})
@@ -144,7 +141,6 @@ app.get('/api/twittertrend', function(req, res){
 function checkTimeOver(date){
 	var now = new Date().getTime()
 	var then = date.getTime()
-	console.log(now - then)
 	if((now - then) > 1000 * 60 * 30){
 		return true
 	}
