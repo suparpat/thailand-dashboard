@@ -10,7 +10,7 @@ const parseString = require('xml2js').parseString;
 const csv = require('csv');
 
 const app = express()
-const port = 3000
+const port = 3001
 
 var twitterTrendCache;
 
