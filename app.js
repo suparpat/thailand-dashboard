@@ -90,7 +90,13 @@ app.get('/api/googlenews', function(req, res){
 
 app.get('/api/pantiptrending', function(req, res){
 	var url = "https://pantip.com/home/ajax_pantip_trend?p=1"
-	request(url, function(error, response, body){
+	var options = {
+	  url: url,
+	  headers: {
+	    'origin': 'https://pantip.com/'
+	  }
+	};
+	request(options, function(error, response, body){
 		res.header('Content-Type', 'application/json; charset=UTF-8')
 		res.end(body)			
 	})
