@@ -63,13 +63,36 @@ function getGoogleNews(){
 }
 
 function getPantip(){
-	$.get( "api/pantiptrending", function( data ) {
-		var temp = "<h2>Pantip Trending</h2><table>"
-		data['trend'].forEach((i, index) => {
+	// $.get( "api/pantiptrending", function( data ) {
+	// 	var temp = "<h2>Pantip Trending</h2><table>"
+	// 	data['trend'].forEach((i, index) => {
+	// 		temp += "<tr>"
+
+	// 		temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['disp_msg'] + "' href='https://pantip.com/topic/" + i['topic_id'] + "'>" + 
+	// 				i['disp_topic'] + "</a>"
+	// 		temp += "</td>"
+
+	// 	})
+	// 	temp += "</table>"
+
+	// 	$('#pantip').html(temp)
+	// });
+
+	$.get( "api/pantipfeed", function( data ) {
+		var temp = "<h2>Pantip Feed</h2><table>"
+		data['rss']['channel'][0]['item'].forEach((i, index) => {
+			var temp_cats = []
+
+			if(i['category']){
+				i['category'].forEach((c) => {
+					temp_cats.push(c['_'])
+				})
+			}
+
 			temp += "<tr>"
 
-			temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['disp_msg'] + "' href='https://pantip.com/topic/" + i['topic_id'] + "'>" + 
-					i['disp_topic'] + "</a>"
+			temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['description'] + "' href='" + i['link'] + "'>" + 
+					i['title'] + "</a>" + (temp_cats.length > 0 ? "<br> [" + temp_cats.join(", ") + "]" : "") + "<br>" + getDateString(new Date(i['pubDate']))
 			temp += "</td>"
 
 		})
@@ -77,6 +100,7 @@ function getPantip(){
 
 		$('#pantip').html(temp)
 	});
+
 }
 
 function getWeatherWarning(){

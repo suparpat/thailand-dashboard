@@ -102,6 +102,16 @@ app.get('/api/pantiptrending', function(req, res){
 	})
 })
 
+app.get('/api/pantipfeed', function(req, res){
+	var url = "https://pantip.com/forum/feed"
+	request(url, function(error, response, body){
+		parseString(body, function(err, result){
+			res.json(result)			
+		})
+	})
+
+})
+
 app.get('/api/averageincome', function(req, res){
 	csv.parse(avgIncome, function(err, data){
 		res.json(data)

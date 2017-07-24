@@ -52,7 +52,7 @@ function initStatsPage(){
 
 
 function getDateString(date){
-	return date.getHours() + ":" + date.getMinutes() + " " + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear()
+	return date.getHours() + ":" + (String(date.getMinutes()).length == 2 ? date.getMinutes() : "0"+date.getMinutes()) + " " + date.getDate() + "/" + (date.getMonth()+1) + "/" + date.getFullYear()
 }
 
 function numberWithCommas(x) {
