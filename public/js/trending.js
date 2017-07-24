@@ -63,36 +63,13 @@ function getGoogleNews(){
 }
 
 function getPantip(){
-	// $.get( "api/pantiptrending", function( data ) {
-	// 	var temp = "<h2>Pantip Trending</h2><table>"
-	// 	data['trend'].forEach((i, index) => {
-	// 		temp += "<tr>"
-
-	// 		temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['disp_msg'] + "' href='https://pantip.com/topic/" + i['topic_id'] + "'>" + 
-	// 				i['disp_topic'] + "</a>"
-	// 		temp += "</td>"
-
-	// 	})
-	// 	temp += "</table>"
-
-	// 	$('#pantip').html(temp)
-	// });
-
-	$.get( "api/pantipfeed", function( data ) {
-		var temp = "<h2>Pantip Feed</h2><table>"
-		data['rss']['channel'][0]['item'].forEach((i, index) => {
-			var temp_cats = []
-
-			if(i['category']){
-				i['category'].forEach((c) => {
-					temp_cats.push(c['_'])
-				})
-			}
-
+	$.get( "api/pantiptrending", function( data ) {
+		var temp = "<h2>Pantip Trending</h2><table>"
+		data['trend'].forEach((i, index) => {
 			temp += "<tr>"
 
-			temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['description'] + "' href='" + i['link'] + "'>" + 
-					i['title'] + "</a>" + (temp_cats.length > 0 ? "<br> [" + temp_cats.join(", ") + "]" : "") + "<br>" + getDateString(new Date(i['pubDate']))
+			temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['disp_msg'] + "' href='https://pantip.com/topic/" + i['topic_id'] + "'>" + 
+					i['disp_topic'] + "</a>"
 			temp += "</td>"
 
 		})
@@ -101,6 +78,31 @@ function getPantip(){
 		$('#pantip').html(temp)
 	});
 
+	// $.get( "https://pantip.com/forum/feed", function( data ) {
+	// 	var temp = "<h2>Pantip Feed</h2><table>"
+	// 	var x2js = new X2JS()
+	// 	var json = x2js.xml_str2json(data)
+	// 	console.log(json)
+	// 	json['rss']['channel'][0]['item'].forEach((i, index) => {
+	// 		var temp_cats = []
+
+	// 		if(i['category']){
+	// 			i['category'].forEach((c) => {
+	// 				temp_cats.push(c['_'])
+	// 			})
+	// 		}
+
+	// 		temp += "<tr>"
+
+	// 		temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['description'] + "' href='" + i['link'] + "'>" + 
+	// 				i['title'] + "</a>" + (temp_cats.length > 0 ? "<br> [" + temp_cats.join(", ") + "]" : "") + "<br>" + getDateString(new Date(i['pubDate']))
+	// 		temp += "</td>"
+
+	// 	})
+	// 	temp += "</table>"
+
+	// 	$('#pantip').html(temp)
+	// });
 }
 
 function getWeatherWarning(){

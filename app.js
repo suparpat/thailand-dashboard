@@ -8,6 +8,8 @@ const request = require('request')
 const express = require('express')
 const parseString = require('xml2js').parseString;
 const csv = require('csv');
+const dns = require('dns');
+
 
 const app = express()
 const port = 3001
@@ -87,6 +89,8 @@ app.get('/api/googlenews', function(req, res){
 		})
 	})
 })
+
+
 
 app.get('/api/pantiptrending', function(req, res){
 	var url = "https://pantip.com/home/ajax_pantip_trend?p=1"

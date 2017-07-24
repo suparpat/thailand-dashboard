@@ -2,7 +2,7 @@
 	<head>
 		<title>Thailand Dashboard</title>
 	     <meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
 	</head>
 	<body>
 		<div style="overflow:hidden">
@@ -136,11 +136,12 @@
 		    L.async=1;L.src='//feed.aqicn.org/feed/'+(c[n].city)+'/'+(c[n].lang||'')+'/feed.v1.js?n='+n+k;  
 		    e.parentNode.insertBefore(L,e);  };  })(  window,document,'script','_aqiFeed'  );    
 		</script>
-		<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="lib/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="lib/xml2json.js"></script>
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.bundle.js"></script>
-		<script type="text/javascript" src="trending.js"></script>
-		<script type="text/javascript" src="stats.js"></script>
-		<script type="text/javascript" src="app.js"></script>
+		<script type="text/javascript" src="js/trending.js"></script>
+		<script type="text/javascript" src="js/stats.js"></script>
+		<script type="text/javascript" src="js/app.js"></script>
 		<script  type="text/javascript"  charset="utf-8">  
 			var  cities  =  ["bangkok",  "chiang-mai", "mueang-chiang-rai", "rayong", "hanoi"];  
 			  
