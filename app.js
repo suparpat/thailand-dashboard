@@ -10,7 +10,6 @@ const parseString = require('xml2js').parseString;
 const csv = require('csv');
 const dns = require('dns');
 
-
 const app = express()
 const port = 3001
 
@@ -65,6 +64,15 @@ app.get('/api/youtubetrending', function(req, res){
 
 app.get('/api/bangkokpost', function(req, res){
 	var url = "http://www.bangkokpost.com/rss/data/topstories.xml"
+	request(url, function(error, response, body){
+		parseString(body, function(err, result){
+			res.json(result)			
+		})
+	})
+})
+
+app.get('/api/tpbsfeed', function(req, res){
+	var url = 'http://englishnews.thaipbs.or.th/feed/'
 	request(url, function(error, response, body){
 		parseString(body, function(err, result){
 			res.json(result)			

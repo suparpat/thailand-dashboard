@@ -1,3 +1,29 @@
+function getTpbsFeed(){
+	$.get( "api/tpbsfeed", function( data ) {
+		var temp = "<h2>Thai PBS</h2><table>"
+		data['rss']['channel'][0]['item'].forEach((i, index) => {
+			var temp_description = i['description'][0]
+
+			var findRepeatingText = temp_description.indexOf('The post <a rel="nofollow"')
+
+			if(findRepeatingText > -1){
+				temp_description = temp_description.substring(0, findRepeatingText)
+			}
+
+			temp += "<tr>"
+
+			temp += "<td style='padding-top:10px'><a target='_blank' href='" + i['link'] + "'>" + 
+					i['title'] + "</a><br>" + 
+					temp_description
+			temp += "</td>"
+
+		})
+		temp += "</table>"
+
+		$('#tpbsfeed').html(temp)
+	});
+}
+
 function getYoutubeTrending(){
 	$.get( "api/youtubetrending", function( data ) {
 		var temp = "<h2>YouTube</h2><table style='width:320px; margin-right:0; margin-left:auto;'>"
@@ -63,20 +89,39 @@ function getGoogleNews(){
 }
 
 function getPantip(){
-	$.get( "api/pantiptrending", function( data ) {
-		var temp = "<h2>Pantip Trending</h2><table>"
-		data['trend'].forEach((i, index) => {
-			temp += "<tr>"
+	$.get( "api/pantipfeed", function( data ) {
+		var temp = "<h2>Pantip Feed</h2><table>"
+		data['rss']['channel'][0]['item'].forEach((i, index) => {
+			// 50 items is too many!
+			if(index < 15){
+				temp += "<tr>"
 
-			temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['disp_msg'] + "' href='https://pantip.com/topic/" + i['topic_id'] + "'>" + 
-					i['disp_topic'] + "</a>"
-			temp += "</td>"
+				temp += "<td style='padding-top:10px'><a target='_blank' href='" + i['link'] + "'>" + 
+						i['title'] + "</a><br>" + 
+						i['description']
+				temp += "</td>"
+			}
 
 		})
 		temp += "</table>"
 
 		$('#pantip').html(temp)
 	});
+
+	// $.get( "api/pantiptrending", function( data ) {
+	// 	var temp = "<h2>Pantip Trending</h2><table>"
+	// 	data['trend'].forEach((i, index) => {
+	// 		temp += "<tr>"
+
+	// 		temp += "<td style='padding-top:10px'><a target='_blank' title='" + i['disp_msg'] + "' href='https://pantip.com/topic/" + i['topic_id'] + "'>" + 
+	// 				i['disp_topic'] + "</a>"
+	// 		temp += "</td>"
+
+	// 	})
+	// 	temp += "</table>"
+
+	// 	$('#pantip').html(temp)
+	// });
 
 	// $.get( "https://pantip.com/forum/feed", function( data ) {
 	// 	var temp = "<h2>Pantip Feed</h2><table>"

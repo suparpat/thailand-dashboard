@@ -37,6 +37,7 @@ function initTrendingPage(){
 		getPantip()
 		getWeatherWarning()
 		getTwitter()
+		getTpbsFeed()
 	}
 }
 
